@@ -3,17 +3,21 @@ import './App.css';
 import styled from "styled-components";
 import BarCharts from './BarCharts';
 import LineGraph from './LineGraph';
+import Body from './Body';
 
 function App() {
   return (
     <Container>
-      <Header>
+      <Header1>
       <BarC className='tt1' ><BarCharts/></BarC>
      <Line1 className='tt2'><LineGraph/></Line1>
+     </Header1>
+     <Header2>
      <Line2 className='tt3'></Line2>
      <Line3 className='tt4'></Line3>
      <Line4 className='tt5'></Line4>
-     </Header>
+     </Header2>
+     <Body/>
       <h1>hi</h1>
     </Container>
   )
@@ -39,66 +43,56 @@ const BarC = styled.div`
   border-radius: 20px;
   padding:20px;
   border:1px solid #ebe9f1;
-  margin: 20px 0 0 20px;
+  margin: 20px;
 `
 
-const Header = styled.div`
-display: grid;
-gap: 20px;
+const Header1 = styled.div`
+display: flex;
 //height: 140vh;
-background-color rgb(50, 168, 12, 1);
+//background-color rgb(50, 168, 12, 1);
 //justify-content: space-between;
-    .tt1{
-      grid-column: 1 ;
-      grid-row: 1 / span 1;
-    }
-    .tt2{
-      grid-column: 2 / span 3  ;
-      grid-row: 1/ span 1 ;
-    }
-
-    .tt3{
-      grid-column: 1 / span 1 ;
-      grid-row: 2 ;
-
-    }
-
-    .tt4{
-      grid-column: 2 / span 1;
-      grid-row: 2 ;
-
-    }
-
-    .tt5{
-      grid-column: 3 /span 1 ;
-      grid-row: 2 ;
-
-    }
+    
 
 `
+
+const Header2 = styled.div`
+display: flex;
+
+`
+
 
 const Line1 = styled.div`
+width:850px;
+height: 500px;
 border-radius: 20px;
 padding:20px;
 border:1px solid #ebe9f1;
 background-color: white;
-margin: 20px 20px 0 0 ;
+margin: 20px ;
 
 `
 const Line2 = styled.div`
+width: 600px;
 border-radius: 20px;
 padding:20px;
 border:1px solid #ebe9f1;
 background-color: white;
+margin: 20px ;
 `
 const Line3 = styled.div`
+width: 600px;
 border-radius: 20px;
 padding:20px;
 border:1px solid #ebe9f1;
-background-color: white;`
+background-color: white;
+margin: 20px ;
+`
 
 const Line4 = styled.div`
+width: 600px;
 border-radius: 20px;
 padding:20px;
 border:1px solid #ebe9f1;
-background-color: white;`
+background-color: white;
+margin: 20px ;
+`
