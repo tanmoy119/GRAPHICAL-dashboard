@@ -2,12 +2,12 @@ import React from 'react';
 import styled from 'styled-components';
 import Selector from './Selector';
 
-function Body() {
+function Body({data}) {
   return (
     <Component >
         <Filters>
             <span className='filter'>Filters -</span>
-            <Selector heading={'Topics'} />
+            <Selector heading={'Topics'} data={data} />
             <Selector heading={'Country'} />
             <Selector heading={'City'} />
             <Selector heading={'Region'} />
@@ -32,28 +32,27 @@ function Body() {
 
 
         </Nav>
-        <NavBody>
-        <span className='Topic'>Topic</span>
-            <span className='title'>U.S. petroleum consumption is projected to remain below the 2005 level.</span>
-            <span className='City'>Falakata</span>
-            <span className='Region'>Northern</span>
-            <span className='Country'>Country</span>
-            <span className='Likelihood'>Likelihood</span>
-            <span className='Intensity'>Intensity</span>
-            <span className='Relevance'>Relevance</span>
-            <span className='Year'>Year</span>
-        </NavBody>
-        <NavBody>
-        <span className='Topic'>Topic</span>
-            <span className='title'>1</span>
-            <span className='City' >Northern America</span>
-            <span className='Region' >Northern America</span>
-            <span className='Country' >United States of America</span>
-            <span className='Likelihood' >10</span>
-            <span className='Intensity' >9</span>
-            <span className='Relevance' >1</span>
-            <span className='Year' >2020-2021</span>
-        </NavBody>
+
+        {
+            data.map((ele)=>{
+                return (
+                    <NavBody>
+                    <span className='Topic'>{ele.topic}</span>
+                        <span className='title'>{ele.title}</span>
+                        <span className='City'>{ele.city?ele.city:'null'}</span>
+                        <span className='Region'>{ele.region}</span>
+                        <span className='Country'>{ele.country}</span>
+                        <span className='Likelihood'>{ele.likelihood}</span>
+                        <span className='Intensity'>{ele.intensity}</span>
+                        <span className='Relevance'>{ele.relevance}</span>
+                        <span className='Year'>{`${ele.year}`}</span>
+                    </NavBody>
+                    
+                );
+            })
+        }
+       
+       
 
 
     </Component>
@@ -106,7 +105,7 @@ padding: 0 20px;
 `
 
 const NavBody = styled.div`
-height: 40px;
+height: 50px;
 background-color: white;
 display: flex;
 align-items: center;
@@ -117,8 +116,9 @@ border-bottom:1px solid #ebe9f1;
         .title{
             display: flex;
             justify-content: center;
-            width: 450px;
-            padding: 0 45px;
+            align-items: center;
+            width: 540px;
+            //padding: 0 45px;
             color: #6e6b7b;
             font-size: 14px;
             height:100%;

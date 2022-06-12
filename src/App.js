@@ -1,11 +1,24 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './App.css';
 import styled from "styled-components";
 import BarCharts from './BarCharts';
 import LineGraph from './LineGraph';
 import Body from './Body';
+import axios from "axios";
+const url ='http://localhost:5000/get/data'; 
 
 function App() {
+
+  const [data,setData] = useState([]);
+  useEffect(()=>{
+      async function fetchData(){
+        const request = await axios.get(url);
+        setData(request.data);
+      }
+      fetchData();
+  },[url]);
+
+  console.log(data);
   return (
     <Container>
       <Header1>
@@ -13,12 +26,11 @@ function App() {
      <Line1 className='tt2'><LineGraph/></Line1>
      </Header1>
      <Header2>
-     <Line2 className='tt3'></Line2>
-     <Line3 className='tt4'></Line3>
-     <Line4 className='tt5'></Line4>
+     <Line2 className='tt3'><LineGraph/></Line2>
+     <Line3 className='tt4'><LineGraph/></Line3>
+     <Line4 className='tt5'><LineGraph/></Line4>
      </Header2>
-     <Body/>
-      <h1>hi</h1>
+     <Body data={data}/>
     </Container>
   )
 }

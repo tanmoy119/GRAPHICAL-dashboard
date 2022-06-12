@@ -6,11 +6,12 @@ import Select from '@mui/material/Select';
 
 
 
-function Selector({heading}) {
+function Selector({heading, data}) {
     const [age, setAge] = React.useState('');
 
     const handleChange = (event) => {
       setAge(event.target.value);
+    
     };
   return (
     <FormControl sx={{ m: 1, minWidth: 120 }} size="small">
